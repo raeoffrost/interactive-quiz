@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Interactive Quiz</title>
+    <style>  
+    h1, h2, h3 {
+    font-family: "Handjet", sans-serif;
+    font-optical-sizing: auto;
+    }
+    p, a {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    }
+    a.nav-link {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    }
+    #hide-answer, #quiz{
+        display:none;
+    }
+    .show-answer, .show-quiz{
+        display: block !important;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="card mx-auto mt-5 justify-content-center p-3" style="max-width: 1040px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img style="background-color: #e3e5e7; border-radius:5px;" src="https://www.dndbeyond.com/avatars/thumbnails/30781/635/1000/1000/638061932141924320.png" class="img-fluid rounded-start" alt="An illustration of a Quazit">
+            <p class="card-text"><small class="text-body-secondary">Image Credit: D&D Basic Rules (2014)</small></p>
+        </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title">Roll Initiative!</h1>
+              <h2>A wild Quizit has appeared!</h2>
+              <p class="card-text">A Quizit is the (very) weak cousin of the Quasit, a demon from the lower planes. 
+                Quizits don't really attack people but instead they do something MUCH worse... <strong>give a Pop Quiz!!</strong></p>
+              <p class="card-text">Your only hope of survival will be to beat this Quizit's Pop Quiz, lest you be trapped 
+                in an endless cycle of multiple choice questions for eternity!<br> Dun Dun Dunnn...</p>
+              <p class="card-text"><small class="text-body-secondary">Are you ready?</small></p>
+              <a class="btn btn-success" onclick="showQuiz()" role="button">Yes! Give me the Pop Quiz.</a>
+              <a class="btn btn-danger" href="#instructions" role="button"> No! Show me how to play.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="container mt-5 bg-dark border border-dark-subtle p-5" id="quiz">
+        <form>
+            <!-- Question 1 -->
+            <div class="row mb-3">
+            <h3>1. What type of dragon has the most HP?</h2>
+            <div>  
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dragon" id="bronze" value="Ancient Bronze Dragon">
+                <label class="form-check-label" for="bronze">
+                    Ancient Bronze Dragon
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dragon" id="blue" value="Ancient Blue Dragon">
+                <label class="form-check-label" for="blue">
+                    Ancient Blue Dragon
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dragon" id="gold" value="Ancient Gold Dragon">
+                <label class="form-check-label" for="gold">
+                    Ancient Gold Dragon
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dragon" id="green" value="Ancient Green Dragon">
+                <label class="form-check-label" for="green">
+                    Ancient Green Dragon
+                </label>
+            </div>
+        </div> 
+        </div>
+        
+            <!-- Question 2 -->
+        <div class="row mb-3">
+            
+            <h3>2. What is a Redcap?</h2>
+                <div>  
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="redcap" id="healing" value="A Healing Remedy">
+                        <label class="form-check-label" for="healing">
+                            A Healing Remedy
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="redcap" id="fungi" value="A Deadly Fungi">
+                        <label class="form-check-label" for="fungi">
+                            A Deadly Fungi
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="redcap" id="fey" value="A Chaotic Fey">
+                        <label class="form-check-label" for="fey">
+                            A Chaotic Fey
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="redcap" id="drink" value="A Good Drink">
+                        <label class="form-check-label" for="drink">
+                            A Good Drink
+                        </label>
+                    </div>
+                </div> 
+        </div>
+
+             <!-- Question 3 -->
+             <div class="row mb-3">
+             <h3>3. What year was Dungeons and Dragons 5th edition released?</h2>
+                <div class="col-sm-10"></div>
+                    <div class="form-control-sm">
+                        <input type="number" id="year" min="1970" max="2022" step="4" aria-label="year">
+                    </div>
+                
+            </div>
+
+              <!-- Question 4 -->
+              <div class="row mb-3">
+            <h3>4. Select each option that is NOT a real D&D monster</h2>
+            <div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="zorbo" name="zorbo" value="Zorbo">
+                        <label class="form-check-label" for="zorbo">
+                            Zorbo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="weird" name="weird" value="Water Weird">
+                        <label class="form-check-label" for="weird">
+                            Water Weird
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="mage" name="mage" value="Star Spawn Larva Mage">
+                        <label class="form-check-label" for="mage">
+                            Star Spawn Larva Mage
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="shark" name="shark"  value="Flying Shark">
+                        <label class="form-check-label" for="shark">
+                            Flying Shark
+                        </label>
+                    </div>
+                </div>
+              </div>
+           
+        </div>
+             <!-- Question 5 -->
+             <div class="row mb-3">
+             <h3>5. Which language is primarily used by Demons?</h2>
+                <div>
+                <select class="form-select" aria-label="Question 5">
+                    <option selected>Pick One</option>
+                    <option value="Abyssal">Abyssal</option>
+                    <option value="Demonic">Demonic</option>
+                    <option value="Fiendish">Fiendish</option>
+                    <option value="Infernal">Infernal</option>
+                  </select>
+            </div>
+             
+        </div>
+            <!-- Submit Button -->
+            <p> You think you got enough points to survive? Well then, it is time to test your fate...</p>
+            <button class="btn btn-secondary" type="submit">Submit</button>
+            <button class="btn btn-primary" type="button" onclick="showAnswers()">Show Answers</button>
+        </form>
+        <div id="hide-answer">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>1: Ancient Gold Dragon</strong> <br> Ancient Gold and Red Dragons are tied for the top spot with 546 HP and both are immune to fire damage.</li>
+                <li class="list-group-item"><strong>2: A Chaotic Fey</strong> <br> A Redcap, specifically referring to D&D, are homicidal Feywild creatures born of blood lust (literally).</li>
+                <li class="list-group-item"><strong>3: 2014</strong> <br> I hope you got this one since it says the answer at the top of the page.</li>
+                <li class="list-group-item"><strong>4: Flying Sharks</strong> <br> While they were a menace in Sharknado, Flying Sharks are not an official D&D monster. All the other things are though! Check 'em out.</li>
+                <li class="list-group-item"><strong>5: Abyssal</strong> <br> Abyssal is the primary language of Demons and Infernal is the language of Devils. Demonic and Fiendish are made up.</li>
+              </ul>
+            <p class="mt-3">Did you pass? I hope so, thank you for playing! I hope you had fun learning about Dungeons and Dragons!</p>
+        </div>
+    </div>
+
+    
+    <div class="mt-3">
+        <div class="card mx-auto mb-3 p-3" style="max-width: 1040px;">
+            <div class="card-body">
+                <h3 class="card-title">About Me</h3>
+                <p class="card-text">I'm Abby! I went to school for Graphic Design but have been working as a Web Designer and Developer for about 5 years now. 
+                    I do mostly front-end but I've coded entire multi-page sites in HTML, CSS, SASS and JavaScript (with the help of trusty w3schools and the like). 
+                    I have taken courses in Drupal theme development and I have quite a bit of first hand experience in WordPress. 
+                    <a class="link-info" href="https://www.abbyfriesen.com">You can check out my (lazy) portfolio here if you wanna see my stuff.</a></p>
+                <p class="card-text">I'm a bit out of practice and self taught in most of my web dev knowledge but I'm looking forward to this class! 
+                    I'm in the Computer Programming and Analysis Course and I can't wait to get more code languages into my repertoire.</p>
+            </div> 
+        </div>
+        <div class="card mx-auto mb-3 p-3 focus-ring" style="max-width: 1040px;" >
+            <div class="card-body">
+                <h3 class="card-title" id="instructions">Instructions</h3>
+                <p class="card-text"> Due to the nature of this project I have opted to not add in a bunch of JavaScript to properly validate this form. 
+                    I have instead added only a tiny bit of JavaScript. An answer key will appear upon clicking "Show Answers" for you to see how well you did. 
+                    I was going to make the submit button do this but since we are required to have a submit button I did not want to break any rules by removing the submit type.</p>
+                    <p class="card-text">The Quizit has 4 HP and there are 5 questions. With each correct question you do 1 "damage" to the Quizit. So, as long as you get at least 4/5 you've killed the Quizit and you win!
+                    If you don't get at least 4/5 the Quizit will trap you in an endless quiz dimension for eternity. Don't say I didn't warn ya. Good Luck!</p>
+            </div> 
+        </div>
+        
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script>
+    function showAnswers() {
+        var element = document.getElementById("hide-answer");
+        element.classList.toggle("show-answer");
+    }
+    function showQuiz() {
+        var element = document.getElementById("quiz");
+        element.classList.toggle("show-quiz");
+    }
+</script>
+</body>
+</html>
